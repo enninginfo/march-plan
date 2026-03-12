@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kat's March 2026 Plan</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F5F6FA; color: #2D2D2D; padding: 32px 16px; }
+  .header { text-align: center; margin-bottom: 32px; }
+  .header h1 { font-size: 28px; font-weight: 700; color: #1A3A5C; }
+  .header p { color: #888; margin-top: 6px; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+  .card { background: white; border-radius: 14px; padding: 22px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+  .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid; }
+  .card-icon { font-size: 22px; }
+  .card-title { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .tea .card-header   { border-color: #D4A057; color: #8B5E1A; }
+  .grc .card-header   { border-color: #2E6DA4; color: #1A3A5C; }
+  .cism .card-header  { border-color: #2E9E6B; color: #1A6645; }
+  .health .card-header{ border-color: #E05C5C; color: #8B1A1A; }
+  .week-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #AAA; margin: 14px 0 8px; }
+  .week-label:first-child { margin-top: 0; }
+  .task { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border-radius: 8px; margin-bottom: 6px; background: #F9F9FB; cursor: pointer; transition: background 0.15s; }
+  .task:hover { background: #EEF2F8; }
+  .checkbox { width: 18px; height: 18px; border: 2px solid #CCC; border-radius: 4px; flex-shrink: 0; margin-top: 1px; transition: all 0.15s; }
+  .task.done .checkbox { background: #2E9E6B; border-color: #2E9E6B; display: flex; align-items: center; justify-content: center; }
+  .task.done .checkbox::after { content: '✓'; color: white; font-size: 11px; font-weight: 700; }
+  .task.done .task-text { text-decoration: line-through; color: #AAA; }
+  .task-text { font-size: 13.5px; line-height: 1.4; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 20px; margin-left: 6px; vertical-align: middle; }
+  .tag-now  { background: #FFF0E0; color: #C97A00; }
+  .tag-key  { background: #E0F0FF; color: #1A5A9C; }
+  .tag-event{ background: #FFE8E8; color: #C03030; }
+  .progress-section { max-width: 1100px; margin: 28px auto 0; background: white; border-radius: 14px; padding: 22px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+  .progress-section h3 { font-size: 14px; font-weight: 700; color: #1A3A5C; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .prog-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .prog-label { width: 160px; font-size: 13px; color: #555; flex-shrink: 0; }
+  .prog-bar-bg { flex: 1; height: 8px; background: #EEE; border-radius: 20px; overflow: hidden; }
+  .prog-bar { height: 100%; border-radius: 20px; width: 0%; transition: width 1s ease; }
+  .prog-pct { width: 36px; font-size: 12px; color: #888; text-align: right; }
+  .tea-bar   { background: linear-gradient(90deg, #D4A057, #F0C070); }
+  .grc-bar   { background: linear-gradient(90deg, #2E6DA4, #5B9FD4); }
+  .cism-bar  { background: linear-gradient(90deg, #2E9E6B, #5BC49A); }
+  .health-bar{ background: linear-gradient(90deg, #E05C5C, #F08080); }
+  .footer { text-align: center; margin-top: 28px; font-size: 12px; color: #BBB; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🗓 Kat's March 2026 Plan</h1>
+  <p>March 12 – March 31 &nbsp;|&nbsp; Click tasks to mark complete</p>
+</div>
+
+<div class="grid">
+
+  <!-- TEA -->
+  <div class="card tea">
+    <div class="card-header">
+      <span class="card-icon">🍵</span>
+      <span class="card-title">Tea</span>
+    </div>
+
+    <div class="week-label">This Week (Mar 12–16)</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">把合作方案写好发给茶评师 <span class="tag tag-now">立刻</span></span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">确认茶活动场地、时间、人数（3月28日）<span class="tag tag-event">活动</span></span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">列出茶活动所需茶具、茶叶清单</span>
+    </div>
+
+    <div class="week-label">Week 2 (Mar 17–23)</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">开始茶艺课程大纲设计（第一课内容）</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">拍摄自创茶艺视频（15–30秒短片）<span class="tag tag-key">关键</span></span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">茶评师合作方案跟进回复</span>
+    </div>
+
+    <div class="week-label">Week 3 – 活动周 (Mar 24–28)</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">排练茶艺表演流程（至少2次）</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">准备活动物料和布置方案</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">🎋 3月28日 茶活动执行 <span class="tag tag-event">活动日</span></span>
+    </div>
+
+    <div class="week-label">Week 4 (Mar 29–31)</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">发布茶艺视频到小红书/Instagram/YouTube</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">活动复盘：收集反馈，记录改进点</span>
+    </div>
+  </div>
+
+  <!-- GRC -->
+  <div class="card grc">
+    <div class="card-header">
+      <span class="card-icon">💼</span>
+      <span class="card-title">GRC Consulting</span>
+    </div>
+
+    <div class="week-label">This Week (Mar 12–16)</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">完成Upwork profile（今天）<span class="tag tag-now">今天</span></span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">提交Hayden proposal（今天）<span class="tag tag-now">今天</span></span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">注册Vanta免费试用账号</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">投2个新Upwork proposals</span>
+    </div>
+
+    <div class="week-label">Week 2 (Mar 17–23)</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">每天30分钟操作Vanta平台</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">再投2个Upwork proposals <span class="tag tag-key">目标5个总计</span></span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">跟进所有proposal回复</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">LinkedIn headline更新</span>
+    </div>
+
+    <div class="week-label">Week 3–4 (Mar 24–31)</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">完成Vanta平台SOC2流程走一遍</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">如有客户回复：安排discovery call <span class="tag tag-key">关键</span></span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">三月总结：投了几个、回复几个、成单几个</span>
+    </div>
+  </div>
+
+  <!-- CISM -->
+  <div class="card cism">
+    <div class="card-header">
+      <span class="card-icon">📜</span>
+      <span class="card-title">CISM Certification</span>
+    </div>
+
+    <div class="week-label">This Week (Mar 12–16)</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">完成CISM认证申请材料提交 <span class="tag tag-now">立刻</span></span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">确认工作经验验证人联系方式</span>
+    </div>
+
+    <div class="week-label">Week 2 (Mar 17–23)</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">起草LinkedIn备考经验文章大纲</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">写完CISM备考经验文章初稿</span>
+    </div>
+
+    <div class="week-label">Week 3–4 (Mar 24–31)</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">发布CISM备考文章到LinkedIn <span class="tag tag-key">关键</span></span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">跟进CISM认证审批状态</span>
+    </div>
+  </div>
+
+  <!-- HEALTH -->
+  <div class="card health">
+    <div class="card-header">
+      <span class="card-icon">💪</span>
+      <span class="card-title">Health — 每周4次</span>
+    </div>
+
+    <div class="week-label">每周重复</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">Week 1：锻炼 4次 ✦✦✦✦</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">Week 2：锻炼 4次 ✦✦✦✦</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">Week 3：锻炼 4次 ✦✦✦✦</span>
+    </div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">Week 4：锻炼 4次 ✦✦✦✦</span>
+    </div>
+
+    <div class="week-label">月底检查</div>
+    <div class="task" onclick="toggle(this)">
+      <div class="checkbox"></div>
+      <span class="task-text">三月总锻炼次数 ≥ 16次 达标</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-section">
+  <h3>📊 三月目标进度</h3>
+  <div class="prog-row">
+    <span class="prog-label">🍵 Tea</span>
+    <div class="prog-bar-bg"><div class="prog-bar tea-bar" id="pb-tea"></div></div>
+    <span class="prog-pct" id="pt-tea">0%</span>
+  </div>
+  <div class="prog-row">
+    <span class="prog-label">💼 GRC Consulting</span>
+    <div class="prog-bar-bg"><div class="prog-bar grc-bar" id="pb-grc"></div></div>
+    <span class="prog-pct" id="pt-grc">0%</span>
+  </div>
+  <div class="prog-row">
+    <span class="prog-label">📜 CISM</span>
+    <div class="prog-bar-bg"><div class="prog-bar cism-bar" id="pb-cism"></div></div>
+    <span class="prog-pct" id="pt-cism">0%</span>
+  </div>
+  <div class="prog-row">
+    <span class="prog-label">💪 Health</span>
+    <div class="prog-bar-bg"><div class="prog-bar health-bar" id="pb-health"></div></div>
+    <span class="prog-pct" id="pt-health">0%</span>
+  </div>
+</div>
+
+<div class="footer">Kat Zhang · March 2026 · Built with Claude</div>
+
+<script>
+function toggle(el) {
+  el.classList.toggle('done');
+  updateProgress();
+}
+
+function updateProgress() {
+  const cards = document.querySelectorAll('.card');
+  const categories = ['tea','grc','cism','health'];
+  categories.forEach(cat => {
+    const card = document.querySelector(`.${cat}`);
+    if (!card) return;
+    const tasks = card.querySelectorAll('.task');
+    const done  = card.querySelectorAll('.task.done');
+    const pct   = tasks.length ? Math.round((done.length / tasks.length) * 100) : 0;
+    document.getElementById(`pb-${cat}`).style.width = pct + '%';
+    document.getElementById(`pt-${cat}`).textContent = pct + '%';
+  });
+}
+
+updateProgress();
+</script>
+</body>
+</html>
